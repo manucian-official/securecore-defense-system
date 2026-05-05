@@ -8,6 +8,8 @@ SecureCore Defense System (SCDS) is a backend-driven cybersecurity incident mana
 
 This project demonstrates practical database design, RESTful API architecture, and modular backend development using Node.js and MySQL.
 
+![ERD Detailed](docs/SCDS_ERDD.png)
+
 ---
 
 ## 2. Objectives
