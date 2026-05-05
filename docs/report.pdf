@@ -1,0 +1,242 @@
+# 🛡️ SECURECORE DEFENSE SYSTEM (SCDS)
+
+## Cybersecurity Incident Management System
+
+---
+
+## 📄 ABSTRACT
+
+SecureCore Defense System (SCDS) is a cybersecurity incident management system designed to monitor, analyze, and respond to security threats. The system integrates users, devices, and security tools into a unified structure using an Entity Relationship Diagram (ERD). This project demonstrates database design, incident workflow, and practical implementation using SQL.
+
+---
+
+# 1. INTRODUCTION
+
+## 1.1 Background
+
+With the rapid growth of digital systems, cybersecurity threats such as malware, phishing, and DDoS attacks are becoming increasingly common. Organizations require structured systems to monitor and respond to these threats efficiently.
+
+## 1.2 Objective
+
+* Design a database system to manage security incidents
+* Model relationships between users, devices, and tools
+* Provide a structured incident response workflow
+* Enable analysis and scalability
+
+---
+
+# 2. THEORETICAL BACKGROUND
+
+## 2.1 CIA Triad
+
+The system is based on three fundamental security principles:
+
+* **Confidentiality**: Protect sensitive data from unauthorized access
+* **Integrity**: Ensure data is not modified improperly
+* **Availability**: Ensure systems remain accessible
+
+---
+
+## 2.2 Entity Relationship Model (ERD)
+
+An ERD is used to visually represent database structure. It includes:
+
+* Entities (tables)
+* Attributes (columns)
+* Relationships
+
+---
+
+## 2.3 Relationships
+
+### Many-to-Many
+
+* Security_Incident ↔ User
+* Security_Incident ↔ Security_Tool
+
+Resolved using junction tables:
+
+* Incident_User
+* Incident_Tool
+
+### Many-to-One
+
+* Security_Incident → Device
+
+---
+
+## 2.4 Normalization
+
+The database follows:
+
+* **1NF**: Atomic values
+* **2NF**: Full dependency on primary key
+* **3NF**: No transitive dependencies
+
+---
+
+## 2.5 Defense-in-Depth
+
+Security is implemented in multiple layers:
+
+* Device layer
+* Network layer
+* Application layer
+
+---
+
+# 3. SYSTEM DESIGN
+
+## 3.1 Entities
+
+### Security_Incident
+
+* incident_id (PK)
+* incident_name
+* incident_type
+* severity_level
+* start_time
+* end_time
+* status
+* device_id (FK)
+
+---
+
+### User
+
+* user_id (PK)
+* name
+* email
+* phone
+* role
+
+---
+
+### Device
+
+* device_id (PK)
+* device_name
+* ip_address
+* operating_system
+* capacity
+
+---
+
+### Security_Tool
+
+* tool_id (PK)
+* tool_name
+* tool_type
+* vendor
+* cost
+* effectiveness_score
+
+---
+
+### Incident_User
+
+* incident_id (PK, FK)
+* user_id (PK, FK)
+* impact_level
+
+---
+
+### Incident_Tool
+
+* incident_id (PK, FK)
+* tool_id (PK, FK)
+* response_time
+* success_rate
+
+---
+
+## 3.2 Relationships Summary
+
+* One Device → Many Incidents
+* One Incident → Many Users
+* One Incident → Many Tools
+
+---
+
+# 4. INCIDENT RESPONSE WORKFLOW
+
+The system follows a structured incident response process:
+
+1. Detect and Analyze
+2. Containment and Eradication
+3. Recovery and Lessons Learned
+4. Post-Incident Report
+5. Distribute Report
+6. Collect Feedback
+7. Update Response Plan
+
+---
+
+# 5. DATABASE IMPLEMENTATION
+
+## 5.1 Schema Example
+
+CREATE TABLE Device (
+device_id INT PRIMARY KEY,
+device_name VARCHAR(255),
+ip_address VARCHAR(50),
+operating_system VARCHAR(100),
+capacity VARCHAR(50)
+);
+
+---
+
+## 5.2 Sample Query
+
+SELECT si.*
+FROM Security_Incident si
+JOIN Incident_User iu ON si.incident_id = iu.incident_id;
+
+---
+
+# 6. EXPERIMENTAL ANALYSIS
+
+## Scenario 1: Malware Attack
+
+* Device: PC-01
+* Users affected: 3
+* Tool used: Antivirus
+
+## Scenario 2: DDoS Attack
+
+* Device: Server
+* Users affected: 100+
+* Tools used: Firewall and IDS
+
+---
+
+## Performance Metrics
+
+* Response Time
+* Success Rate
+* Number of affected users
+
+---
+
+# 7. FUTURE DEVELOPMENT
+
+* AI-based threat detection
+* Real-time monitoring dashboard
+* Cloud-based deployment
+* Automated incident response
+
+---
+
+# 8. CONCLUSION
+
+The SecureCore Defense System demonstrates how database design and cybersecurity principles can be integrated into a scalable system. By combining ERD modeling, normalization, and real-world workflows, the system provides a solid foundation for managing cybersecurity incidents effectively.
+
+---
+
+# 📚 REFERENCES
+
+* Cybersecurity Fundamentals
+* Database Design Principles
+* Incident Response Frameworks
+
+---
