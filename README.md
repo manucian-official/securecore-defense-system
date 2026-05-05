@@ -150,7 +150,7 @@ This workflow aligns with standard incident response practices in cybersecurity.
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/your-username/securecore-defense-system.git
+git clone https://github.com/manucian-official/securecore-defense-system.git
 cd securecore-defense-system
 ```
 
